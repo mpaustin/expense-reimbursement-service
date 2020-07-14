@@ -1,0 +1,121 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<!--<web-app>-->
+<!--  <display-name>Matt Austin's ERS</display-name>-->
+<!--</web-app>-->
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+  <listener>
+    <listener-class>com.ex.app.context.Context</listener-class>
+  </listener>
+
+  <filter>
+    <filter-name>RequestLogFilter</filter-name>
+    <filter-class>com.ex.web.CORSFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>RequestLogFilter</filter-name>
+    <url-pattern>/*</url-pattern> <!--every single request-->
+  </filter-mapping>
+
+  <context-param>
+    <param-name>serviceLookupName</param-name>
+    <param-value>Service</param-value>
+  </context-param>
+
+<!--  register servlet-->
+<servlet>
+  <servlet-name>LoginServlet</servlet-name>
+  <!--FQCN (Fully Qualified Class Name)-->
+  <servlet-class>com.ex.web.LoginServlet</servlet-class>
+</servlet>
+<!--  servlet mapping-->
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+<!--    assign url pattern-->
+    <!-- http://localhost:8080/project1mpa/api/reimbursements -->
+    <url-pattern>/api/login/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>RegNewEmpServlet</servlet-name>
+    <servlet-class>com.ex.web.RegNewEmpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegNewEmpServlet</servlet-name>
+    <url-pattern>/api/regnewemp/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>SubmitNewRRServlet</servlet-name>
+    <servlet-class>com.ex.web.SubmitNewRRServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SubmitNewRRServlet</servlet-name>
+    <url-pattern>/api/submitnewrr/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ViewAllEmpsServlet</servlet-name>
+    <servlet-class>com.ex.web.ViewAllEmpsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewAllEmpsServlet</servlet-name>
+    <url-pattern>/api/viewallemps/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ViewAllResRRsServlet</servlet-name>
+    <servlet-class>com.ex.web.ViewAllResRRsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewAllResRRsServlet</servlet-name>
+    <url-pattern>/api/viewallresrrs/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ViewAllRRsServlet</servlet-name>
+    <servlet-class>com.ex.web.ViewAllRRsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewAllRRsServlet</servlet-name>
+    <url-pattern>/api/viewallrrs/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ViewEditProfServlet</servlet-name>
+    <servlet-class>com.ex.web.ViewEditProfServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewEditProfServlet</servlet-name>
+    <url-pattern>/api/vieweditprof/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ViewEmpResRRsServlet</servlet-name>
+    <servlet-class>com.ex.web.ViewEmpResRRsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewEmpResRRsServlet</servlet-name>
+    <url-pattern>/api/viewempresrrs/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ViewEmpRRsServlet</servlet-name>
+    <servlet-class>com.ex.web.ViewEmpRRsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewEmpRRsServlet</servlet-name>
+    <url-pattern>/api/viewemprrs/*</url-pattern>
+  </servlet-mapping>
+
+
+
+</web-app>
